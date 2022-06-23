@@ -10,8 +10,7 @@ function TodoForm() {
     } = React.useContext(TodoContext)
 
     const onChange = (event) => {
-        if(event.target.value !== '')
-            setNewTodoValue(event.target.value)
+        setNewTodoValue(event.target.value)
     }
 
     const onCancel = () => {
@@ -20,8 +19,10 @@ function TodoForm() {
     
     const onSubmit = (event) => {
         event.preventDefault()
-        addTodo(newTodoValue)
-        setOpenModal(false)
+        if(newTodoValue.length > 0){
+            addTodo(newTodoValue)
+            setOpenModal(false)
+        }
     }
     
     return (
